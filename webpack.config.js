@@ -13,6 +13,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].js'
   },
+  optimization: {
+    usedExports: true
+  },
   module: {
     rules: [
       {
@@ -40,7 +43,7 @@ module.exports = {
       filename: 'style.[contenthash].css'
     }),
     new HtmlWebpackPlugin({
-      inject: false,
+      inject: true,
       hash: true,
       template: './src/index.html',
       filename: 'index.html'
