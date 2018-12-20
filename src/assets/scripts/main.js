@@ -1,9 +1,11 @@
 class Human {
   constructor () {
-    this.name = 'dsdsd'
+    this.name = 'dsdsd';
   }
 }
 
-const t = new Human()
+const t = new Human();
 
-console.log(t)
+console.log(t);
+
+const a = 'sr';
