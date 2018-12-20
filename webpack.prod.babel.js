@@ -11,6 +11,7 @@ const paths = parts.getPaths();
 
 const commonConfig = merge([
   {
+    optimization: parts.loadOptimization(),
     devtool: 'source-map',
     entry: './src/index.js',
     output: {

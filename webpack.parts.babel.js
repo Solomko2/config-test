@@ -1,10 +1,10 @@
-import fs from 'fs'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import path from 'path'
-import * as R from 'ramda'
+import fs from 'fs';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
+import * as R from 'ramda';
 
-const pagesWithFolders = fs.readdirSync(path.resolve(__dirname, 'src/templates/views'))
-const pages = R.map(R.replace('.pug', ''))(pagesWithFolders)
+const pagesWithFolders = fs.readdirSync(path.resolve(__dirname, 'src/templates/views'));
+const pages = R.map(R.replace('.pug', ''))(pagesWithFolders);
 
 exports.getPaths = ({
   sourceDir = 'src',
@@ -15,20 +15,20 @@ exports.getPaths = ({
   js = 'scripts',
   css = 'styles'
 } = {}) => {
-  const assets = { images, fonts, js, css }
+  const assets = { images, fonts, js, css };
 
   return Object.keys(assets).reduce((obj, assetName) => {
-    const assetPath = assets[assetName]
+    const assetPath = assets[assetName];
 
-    obj[assetName] = !staticDir ? assetPath : `${staticDir}/${assetPath}`
+    obj[assetName] = !staticDir ? assetPath : `${staticDir}/${assetPath}`;
 
-    return obj
+    return obj;
   }, {
     src: path.join(__dirname, sourceDir),
     build: path.join(__dirname, buildDir),
     staticDir
-  })
-}
+  });
+};
 
 exports.loadPug = (options) => ({
   module: {
@@ -50,7 +50,7 @@ exports.loadPug = (options) => ({
       filename: `${page}.html`
     }))
   ]
-})
+});
 
 exports.loadJS = ({ include, exclude } = {}) => ({
   module: {
@@ -73,4 +73,16 @@ exports.loadJS = ({ include, exclude } = {}) => ({
       }
     ]
   }
-})
+});
+
+exports.loadOptimization = (options = {}) => R.mergeDeepRight({
+  splitChunks: {
+    cacheGroups: {
+      commons: {
+        test: /[\\/]node_modules[\\/]/,
+        name: 'vendors',
+        chunks: 'all'
+      }
+    }
+  }
+}, options);

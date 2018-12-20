@@ -1,9 +1,10 @@
+import 'ramda';
+
 class Human {
-  constructor () {
-    this.name = 'dsdsd';
+  constructor (name) {
+    this.name = name;
   }
 }
 
-const t = new Human();
-
-console.log(t);
+const man = new Human('George');
+console.log(man);

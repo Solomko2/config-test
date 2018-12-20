@@ -6,6 +6,7 @@ const paths = parts.getPaths();
 
 const commonConfig = merge([
   {
+    optimization: parts.loadOptimization(),
     devtool: 'eval-cheap-module-source-map',
     entry: `${paths.src}/index.js`,
     devServer: {
