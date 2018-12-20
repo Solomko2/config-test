@@ -1,14 +1,14 @@
-'use strict';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
-import merge from 'webpack-merge';
+'use strict'
+import CleanWebpackPlugin from 'clean-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import merge from 'webpack-merge'
 
-import * as parts from './webpack.parts.babel';
+import * as parts from './webpack.parts.babel'
 
-const paths = parts.getPaths();
+const paths = parts.getPaths()
 
- const commonConfig = merge([
+const commonConfig = merge([
   {
     devtool: 'source-map',
     entry: './src/index.js',
@@ -77,14 +77,11 @@ const paths = parts.getPaths();
       })
     ]
   },
-   parts.loadPug({pretty: true}),
-   parts.loadJS({
-     include: paths.src,
-     options: {
-       presets: ['env']
-     }
-   })
-]);
+  parts.loadPug({ pretty: true }),
+  parts.loadJS({
+    include: paths.src,
+    exclude: /node_modules/
+  })
+])
 
-
-module.exports = commonConfig;
+module.exports = commonConfig

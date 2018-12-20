@@ -60,9 +60,7 @@ const commonConfig = merge([
   parts.loadPug({pretty: true}),
   parts.loadJS({
     include: paths.src,
-    options: {
-      presets: ['env']
-    }
+    exclude: /node_modules/
   })
 ]);
 
