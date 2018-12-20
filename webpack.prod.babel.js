@@ -70,7 +70,9 @@ const commonConfig = merge([
       new ExtractTextPlugin('styles.[md5:contenthash:hex:20].css', {
         allChunks: true
       }),
-      new StyleLintPlugin(),
+      new StyleLintPlugin({
+        syntax: 'scss'
+      }),
       new OptimizeCssAssetsPlugin({
         cssProcessor: require('cssnano'),
         cssProcessorOptions: {

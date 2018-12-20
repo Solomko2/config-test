@@ -57,7 +57,9 @@ const commonConfig = merge([
       ]
     },
     plugins: [
-      new StyleLintPlugin()
+      new StyleLintPlugin({
+        syntax: 'scss'
+      })
     ]
   },
   parts.loadPug({pretty: true}),
