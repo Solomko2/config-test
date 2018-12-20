@@ -1,4 +1,10 @@
-body {
+#root {
   display: grid;
+  margin: 100px;
+  position: absolute;
   transform: translateY(100px);
+}
+
+#test {
+  color: red;
 }

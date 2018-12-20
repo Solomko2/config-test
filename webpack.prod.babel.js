@@ -1,12 +1,13 @@
-'use strict'
-import CleanWebpackPlugin from 'clean-webpack-plugin'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
-import merge from 'webpack-merge'
+'use strict';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import StyleLintPlugin from 'stylelint-webpack-plugin';
+import merge from 'webpack-merge';
 
-import * as parts from './webpack.parts.babel'
+import * as parts from './webpack.parts.babel';
 
-const paths = parts.getPaths()
+const paths = parts.getPaths();
 
 const commonConfig = merge([
   {
@@ -69,6 +70,7 @@ const commonConfig = merge([
       new ExtractTextPlugin('styles.[md5:contenthash:hex:20].css', {
         allChunks: true
       }),
+      new StyleLintPlugin(),
       new OptimizeCssAssetsPlugin({
         cssProcessor: require('cssnano'),
         cssProcessorOptions: {
@@ -88,6 +90,6 @@ const commonConfig = merge([
     include: paths.src,
     exclude: /node_modules/
   })
-])
+]);
 
-module.exports = commonConfig
+module.exports = commonConfig;

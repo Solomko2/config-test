@@ -1,5 +1,5 @@
 import merge from 'webpack-merge';
-
+import StyleLintPlugin from 'stylelint-webpack-plugin';
 import * as parts from './webpack.parts.babel';
 
 const paths = parts.getPaths();
@@ -55,7 +55,10 @@ const commonConfig = merge([
           ]
         }
       ]
-    }
+    },
+    plugins: [
+      new StyleLintPlugin()
+    ]
   },
   parts.loadPug({pretty: true}),
   parts.loadJS({
