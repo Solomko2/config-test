@@ -1,2 +1,4 @@
 import "./assets/styles/app.scss";
-console.log("hello");
+import "./assets/scripts/main";
+
+
