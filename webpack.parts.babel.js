@@ -4,12 +4,15 @@ import path from 'path';
 import * as R from 'ramda';
 
 const pagesWithFolders = fs.readdirSync(path.resolve(__dirname, 'src/templates/views'));
-const pages = R.map(R.replace('.pug', ''))(pagesWithFolders);
+const pages = R.compose(
+  R.map(R.replace('.pug', '')),
+  R.filter(R.includes('.pug'))
+)(pagesWithFolders);
 
 exports.getPaths = ({
   sourceDir = 'src',
   buildDir = 'dist',
-  staticDir = '',
+  staticDir = undefined,
   images = 'images',
   fonts = 'fonts',
   js = 'scripts',

@@ -52,18 +52,12 @@ const commonConfig = merge([
           })
         },
         {
-          test: /\.(png|jpg|gif)$/,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                name: '[name].[hash:20].[ext]',
-                limit: 8192
-              }
-            }
-          ]
+          test: /\.(gif|png|jpe?g|svg)$/i,
+          loader: 'file-loader',
+          options: {
+            name: 'images/[name].[ext]'
+          }
         }
-
       ]
     },
     plugins: [

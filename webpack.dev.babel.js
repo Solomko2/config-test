@@ -44,16 +44,11 @@ const commonConfig = merge([
           ]
         },
         {
-          test: /\.(png|jpg|gif)$/,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                name: '[path][name].[ext]?hash=[hash:20]',
-                limit: 8192
-              }
-            }
-          ]
+          test: /\.(gif|png|jpe?g|svg)$/i,
+          loader: 'file-loader',
+          options: {
+            name: 'images/[name].[ext]'
+          }
         }
       ]
     },
