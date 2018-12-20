@@ -7,5 +7,3 @@ class Human {
 const t = new Human();
 
 console.log(t);
-
-const a = 'sr';
